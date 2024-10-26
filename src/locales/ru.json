@@ -1,0 +1,34 @@
+{
+    "Nav_Files": "Файлы",
+    "Nav_Upload": "Отправить",
+    "Nav_MyFiles": "Мои Файлы",
+    "Nav_Login": "Войти",
+    "Nav_Settings": "Настройки",
+    "Nav_Help": "Помощь",
+    "Nav_Schedule": "Расписание",
+    "Nav_Time": "Звонки",
+
+    "Space_UsedFrom": "использовано из",
+    "Space_GB": "Гигабайт",
+
+    "Files_Anonymous": "Аноним",
+    "Files_Uploaded": "загрузил",
+    "Files_Files": "файла",
+    "Files_FilesAlt": "файлов",
+    "Files_File": "файл",
+    "Files_Download": "Скачать",
+    "Files_Remove": "Открепить",
+    "Files_DropHere": "Перенесите файлы сюда",
+    "Files_FilesToUpload": "Файлы для отправки",
+    "Files_Upload": "Отправить",
+
+    "Settings_Title": "Настройки",
+    "Settings_Language": "Язык",
+
+    "TodayAt": "Сегодня в",
+    "YesterdayAt": "Вчера в",
+
+    "Loading": "Ждёмс",
+
+    "Later": "ПАТОМ"
+}

@@ -1,0 +1,34 @@
+{
+    "Nav_Files": "Files",
+    "Nav_Upload": "Upload",
+    "Nav_MyFiles": "My Files",
+    "Nav_Login": "Login",
+    "Nav_Settings": "Settings",
+    "Nav_Help": "Help",
+    "Nav_Schedule": "Schedule",
+    "Nav_Time": "Time",
+
+    "Space_UsedFrom": "used from",
+    "Space_GB": "GB",
+
+    "Files_Anonymous": "Anonymous",
+    "Files_Uploaded": "uploaded",
+    "Files_Files": "files`",
+    "Files_FilesAlt": "files",
+    "Files_File": "files",
+    "Files_Download": "Download",
+    "Files_Remove": "Remove",
+    "Files_DropHere": "Drop Files Here",
+    "Files_FilesToUpload": "Files to upload",
+    "Files_Upload": "Upload",
+
+    "Settings_Title": "Settings",
+    "Settings_Language": "Language",
+
+    "TodayAt": "Today At",
+    "YesterdayAt": "Yesterday At",
+
+    "Loading": "Loading",
+
+    "Later": "Later"
+}
