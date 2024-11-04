@@ -75,6 +75,8 @@
         border: .1rem solid #222026;
         border-radius: .8rem;
 
+        overflow: hidden;
+
         &__header {
             display: flex;
             align-items: center;
