@@ -17,6 +17,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../views/Upload.vue')
     },
     {
+        path: '/link',
+        name: 'link',
+        component: () => import(/* webpackChunkName: "about" */ '../views/PinLink.vue')
+    },
+    {
         path: '/my',
         name: 'My Files',
         component: () => import(/* webpackChunkName: "about" */ '../views/MyFiles.vue')

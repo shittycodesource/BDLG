@@ -6,6 +6,10 @@
 
         <div class="input-block__wrapper">
             <slot></slot>
+
+            <div class="input-block__inside">
+                <slot name="inside"></slot>
+            </div>
         </div>
 
         <slot name="outside"></slot>
@@ -38,12 +42,26 @@
             color: #484848;
         }
 
-        &__wrapper {
-            padding: 1.2rem 1.6rem;
+        &__inside {
+            // margin-right: -1rem;
+            // margin-bottom: -.5rem;
+            // margin-top: -.5rem;
+            position: absolute;
+            top: .4rem;
+            bottom: .4rem;
+            right: .4rem;
+        }
 
-            border-radius: .8rem;
-            background: #F7F9FB;
-            border: .1rem solid #E7E7E7;
+        &__wrapper {
+            display: flex;
+            align-items: center;
+
+            // padding: 1.2rem 1.6rem;
+            padding: 1.2rem 1.4rem;
+
+            border-radius: 5rem;
+            background: #131215;
+            border: .1rem solid #222026;
 
             position: relative;
             
@@ -53,8 +71,8 @@
                 width: calc(100% + 1rem);
                 height: calc(100% + 1rem);
     
-                border-radius: 1rem;
-                border: .2rem solid #5B93FF;
+                border-radius: 5rem;
+                border: .2rem solid #E6406B;
     
                 position: absolute;
                 top: 50%;

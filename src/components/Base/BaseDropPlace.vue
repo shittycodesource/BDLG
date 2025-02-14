@@ -20,7 +20,7 @@
             <!-- <base-icon name="load" width="5.5rem" height="5.3rem"></base-icon> -->
         </div>
 
-        <base-file-reader ref="input" @emitFiles="setFiles" :filesArray="files"></base-file-reader>
+        <base-file-reader ref="input" @emitFiles="setFiles" :filesArray="getDroppedFiles"></base-file-reader>
     </div>
 </template>
 
@@ -28,6 +28,8 @@
     import BaseIcon from './BaseIcon.vue';
     import BaseButton from './BaseButton.vue';
     import BaseFileReader from './BaseFileReader.vue';
+
+    import { mapGetters, mapActions } from 'vuex'; 
 
     export default {
         name: "BaseDropPlace",
@@ -37,13 +39,17 @@
                 isDragActive: false,
             }
         },
-        props: {
-            files: {
-                type: Array,
-                default: () => []
-            }
+        // props: {
+        //     files: {
+        //         type: Array,
+        //         default: () => []
+        //     }
+        // },
+        computed: {
+            ...mapGetters(['getDroppedFiles'])
         },
         methods: {
+            ...mapActions(['dropFilesToState']),
             dragEnter() { this.isDragActive = true },
             dragLeave() { this.isDragActive = false },
             drop(event) {
@@ -56,7 +62,12 @@
             },
 
             setFiles(value) {
-                this.$emit('setFiles', value);
+                // this.$emit('setFiles', value);
+                this.dropFilesToState(value);
+
+                if (this.$route.path == '/') {
+                    this.$router.push('/upload')
+                }
             },
         }
     }
@@ -67,7 +78,7 @@
         --offset: 5rem;
 
         // width: 50rem;
-        width: 100%;
+        width: calc(100% - 4rem);
         height: calc(var(--drop-place-height) + var(--offset));
         padding-top: var(--offset);
         
@@ -86,8 +97,8 @@
         position: absolute;
 
         top: calc(var(--offset) * -1);
-        left: 0;
-        right: 0;
+        left: 50%;
+        transform: translateX(-50%);
 
         transition: background .2s ease;
 

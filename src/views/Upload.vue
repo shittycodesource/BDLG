@@ -2,28 +2,34 @@
     <div class="upload">
         <div class="container">
             <div class="upload__inner">
+                <base-drop-place></base-drop-place>
 
-                <div class="upload__title">{{ 'Files_DropHere' | localize }}</div>
+                <template v-if="getDroppedFiles.length">
 
-                <base-drop-place @setFiles="value => files = value" :files="files"></base-drop-place>
+                    <div class="upload__title">ВЫБРАННЫЕ ФАЙЛЫ</div>
 
-                <div class="upload__subtitle" v-if="files.length">{{ 'Files_FilesToUpload' | localize }}</div>
-                
-                <base-files-wrapper v-if="files.length"
-                    :header="false" 
-                    :isRemoveable="true"
+                    <div class="files__grid">
+                        <base-file 
+                            v-for="(data, index) in getDroppedFiles" 
+                            :file="data" 
+                            :key="index" 
+                            :isRaw="true" 
+                            :isDownloadble="false"
+                            :isRemoveable="true"
 
-                    :data="{ files: files }"
+                            @remove="unpinFile"
+                        ></base-file>
+                    </div>
 
-                    @remove="file => files.splice(files.indexOf(file), 1)"
-                ></base-files-wrapper>
+                    <base-button :isColored="true" :isRed="true" @click.native="send">
+                        {{ 'Files_Upload' | localize }}
+                    </base-button>
+                </template>
+                <div class="upload__empty" v-else>
+                    ПУСТО
+                </div>
 
                 <base-loading-overlay :isVisible="isRequestActive"></base-loading-overlay>
-
-                <base-button v-if="files.length" @click.native="send">
-                    <base-icon name="send" width="2rem" height="2rem"></base-icon>
-                    {{ 'Files_Upload' | localize }}
-                </base-button>
             </div>
         </div>
     </div>
@@ -33,15 +39,16 @@
 import BaseDropPlace from '../components/Base/BaseDropPlace.vue';
 import BaseButton from '../components/Base/BaseButton.vue';
 import BaseIcon from '../components/Base/BaseIcon.vue';
+import BaseFile from '../components/Base/BaseFile.vue';
 import BaseLoadingOverlay from '../components/Base/BaseLoadingOverlay.vue';
 
 import vFilesWrapper from '../components/vFilesWrapper.vue';
 
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
     name: "Upload",
-    components: { BaseDropPlace, vFilesWrapper, BaseButton, BaseIcon, BaseLoadingOverlay },
+    components: { BaseDropPlace, vFilesWrapper, BaseButton, BaseIcon, BaseLoadingOverlay, BaseFile },
     data() {
         return {
             files: [],
@@ -49,12 +56,12 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['sendFiles']),
+        ...mapActions(['sendFiles', 'removeFileFromState']),
         async send() {
             try {
                 this.isRequestActive = true;
                 
-                await this.sendFiles(this.files);
+                await this.sendFiles(this.getDroppedFiles);
 
                 this.files = [];
 
@@ -64,7 +71,15 @@ export default {
             } catch (error) {
                 throw error;
             }
+        },
+        unpinFile(data) {
+            console.log('removeFile', data);
+
+            this.removeFileFromState(data);
         }
+    },
+    computed: {
+        ...mapGetters(['getDroppedFiles'])
     }
 }
 </script>
@@ -76,14 +91,16 @@ export default {
             align-items: center;
             justify-content: center;
             flex-direction: column;
+
+            padding-top: calc(var(--drop-place-height) + 1.6rem);
         }
 
         &__title {
-            margin: 3.2rem auto;
+            margin: 0 auto 1.6rem;
 
             font-weight: 800;
-            font-size: 3.5rem;
-            color: #5B93FF;
+            font-size: 2rem;
+            color: #FFF;
 
             text-transform: uppercase;
         }
@@ -95,6 +112,13 @@ export default {
             font-size: 3.5rem;
 
             text-transform: uppercase;
+        }
+
+        &__empty {
+            font-weight: 900;
+            color: #181818;
+            margin: 8rem auto;
+            font-size: 9rem;
         }
     }
 </style>

@@ -1,6 +1,7 @@
 {
     "Nav_Files": "Files",
     "Nav_Upload": "Upload",
+    "Nav_PinLink": "Pin Link",
     "Nav_MyFiles": "My Files",
     "Nav_Login": "Login",
     "Nav_Settings": "Settings",
@@ -21,6 +22,8 @@
     "Files_DropHere": "Drop Files Here",
     "Files_FilesToUpload": "Files to upload",
     "Files_Upload": "Upload",
+
+    "FileGuest": "Guest",
 
     "Settings_Title": "Settings",
     "Settings_Language": "Language",

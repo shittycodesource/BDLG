@@ -14,6 +14,10 @@
             @input="onInput"
         />
 
+        <template #inside>
+            <slot name="inside"></slot>
+        </template>
+
         <template #outside>
 
         </template>

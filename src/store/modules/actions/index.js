@@ -4,6 +4,8 @@ import space from './modules/space.js';
 import settings from './modules/settings.js';
 import time from './modules/time.js';
 import schedule from './modules/schedule.js';
+import drop from './modules/drop.js';
+import link from './modules/link.js';
 
 export default {
     ...auth,
@@ -11,5 +13,7 @@ export default {
     ...space,
     ...settings,
     ...time,
-    ...schedule
+    ...schedule,
+    ...drop,
+    ...link
 }

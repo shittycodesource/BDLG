@@ -1,6 +1,7 @@
 <template>
     <aside class="sidebar">
         <header class="sidebar__header">
+            <img class="sidebar__logo-backdrop" :src="require('@/assets/backdrop.svg')">
             <img :src="require('@/assets/logo.svg')">
             <div class="sidebar__title">
                 BDLG
@@ -28,10 +29,11 @@
                 upperLinks: [
                     { name: "Nav_Files", path: "/", exact: true, icon: { name: "folder", width: "2.1rem", height: "1.9rem" } },
                     { name: "Nav_Upload", path: "/upload", exact: false, icon: { name: "upload", width: "2.3rem", height: "1.9rem" } },
-                    { name: "Nav_MyFiles", path: "/my", exact: false, icon: { name: "archive", width: "2.2rem", height: "1.9rem" } },
-                    { name: "Nav_Login", path: "/login", exact: false, icon: { name: "login", width: "2rem", height: "2rem" } },
-                    { name: "Nav_Schedule", path: "/schedule", exact: false, icon: { name: "bell", width: "2.4rem", height: "2rem" } },
-                    { name: "Nav_Settings", path: "/settings", exact: false, icon: { name: "settings", width: "2.4rem", height: "2rem" } },
+                    { name: "Nav_PinLink", path: "/link", exact: false, icon: { name: "link", width: "2.3rem", height: "1.9rem" } },
+                    // { name: "Nav_MyFiles", path: "/my", exact: false, icon: { name: "archive", width: "2.2rem", height: "1.9rem" } },
+                    // { name: "Nav_Schedule", path: "/schedule", exact: false, icon: { name: "bell", width: "2.4rem", height: "2rem" } },
+                    // { name: "Nav_Settings", path: "/settings", exact: false, icon: { name: "settings", width: "2.4rem", height: "2rem" } },
+                    // { name: "Nav_Login", path: "/login", exact: false, icon: { name: "login", width: "2rem", height: "2rem" } },
                 ],
                 lowerLinks: [
                     // { name: "Nav_Schedule", path: "/schedule", exact: false, icon: { name: "schedule", width: "2.4rem", height: "2rem" } },
@@ -60,6 +62,19 @@
         border-top-right-radius: 2rem;
         border-bottom-right-radius: 2rem;
          
+        &__logo-backdrop {
+            position: absolute;
+            width: 100% !important;
+            left: 0;
+            height: 100% !important;
+            transform: scale(2);
+
+            user-select: none;
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
         &__header {
             height: 6rem;
             width: 100%;

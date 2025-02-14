@@ -13,6 +13,10 @@ export default {
         state.files.unshift(data);
     },
 
+    CLEAR_FETCHED_FILES(state) {
+        state.files = [];
+    },
+
     INIT_FETCH(state) {
         state.isInitFetchDone = true;
     },
@@ -23,6 +27,15 @@ export default {
 
     HIDE_FILE_OVERLAY(state) {
         state.isFileOverlayOpen = false;
+    },
+
+    SAVE_SUBSCRIPTION(state, sub) {
+        state.sub = sub;
+    },
+
+    UNSUBCRIBE(state) {
+        state.sub();
+        state.sub = null;
     }
 
 }

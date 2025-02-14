@@ -29,9 +29,16 @@ export default {
                     const change = snapshot.docChanges()[i];
                     const doc = change.doc.data();
 
-                    if (change.type === "added") {
+                    console.log(doc);
+                    console.log(change.type);
+
+                    if (change.type == "added") {
 
                         if (doc.createdAt) {
+                            if (doc.isLink) {
+                                console.log('-LINK FOUND-LINK FOUND-LINK FOUND-LINK FOUND-LINK FOUND-LINK FOUND-LINK FOUND')
+                            }
+
                             if (getters.isInitDone) {
                                 doc.isNew = true;
                             }
@@ -42,27 +49,45 @@ export default {
                 }
 
                 commit('INIT_FETCH');
-            })
+            });
+
+            commit('SAVE_SUBSCRIPTION', unsub);
         } catch (error) {
             console.log('[fetchFiles() Error]');
             throw error;
         }
     },
 
+    async refetchFiles({commit, getters, dispatch}) {
+        commit('UNSUBCRIBE');
+        await dispatch('clearFetched');
+        await dispatch('fetchFiles');
+
+        console.log('refetch');
+    },
+
+    clearFetched({commit}) {
+        commit('CLEAR_FETCHED_FILES')
+    },
+
 
     /* 
         Send Documents
     */
-    async sendFiles({}, files) {
+    async sendFiles({dispatch}, files) {
         try {
             const { urls, refs, sizes } = await uploadFiles(files);
             const result = [];
+
+            console.log('sendFiles()', result);
 
             for (let i = 0; i <= files.length - 1; i++) {
                 result.push({ name: files[i].name, url: urls[i], ref: refs[i],  size: files[i].size });
             }
 
             const id = generateRandomID();
+
+            console.log('sendFiles()', id);
 
             const data = {
                 userId: 0,
@@ -74,8 +99,16 @@ export default {
                 id
             };
 
+            console.log('sendFiles()', data);
+
             await setDoc(documentRef(db, 'files', id), data);
-            await setDoc(documentRef(db, 'space', 'used'), { size: increment(sizes) }, { merge: true });
+            await dispatch('clearFilesFromState');
+
+            console.log('sendFiles() doc has been set');
+
+            await dispatch('refetchFiles');
+
+            // await setDoc(documentRef(db, 'space', 'used'), { size: increment(sizes) }, { merge: true });
         } catch (error) {
             console.log('[sendFiles() Error]');
             throw error;

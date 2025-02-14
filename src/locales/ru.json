@@ -1,6 +1,7 @@
 {
     "Nav_Files": "Файлы",
     "Nav_Upload": "Отправить",
+    "Nav_PinLink": "Прикрепить",
     "Nav_MyFiles": "Мои Файлы",
     "Nav_Login": "Войти",
     "Nav_Settings": "Настройки",
@@ -21,6 +22,8 @@
     "Files_DropHere": "Перенесите файлы сюда",
     "Files_FilesToUpload": "Файлы для отправки",
     "Files_Upload": "Отправить",
+
+    "FileGuest": "Гость",
 
     "Settings_Title": "Настройки",
     "Settings_Language": "Язык",

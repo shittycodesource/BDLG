@@ -54,13 +54,15 @@
         }
 
         &--red {
-            border-color: #CA3774;
-            background: #EC4E87;
-            color: #AA0048;
+            // border-color: #CA3774;
+            // background: #EC4E87;
+            // color: #AA0048;
+            color: #E6406B;
         }
 
         &--small {
             font-size: 1.2rem;
+            padding: 1rem 1.6rem;
         }
     }
 </style>

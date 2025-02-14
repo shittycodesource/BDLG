@@ -5,9 +5,9 @@
 
             <base-drop-place></base-drop-place>
 
-            <base-folders-grid :folders="folders"></base-folders-grid>
+            <!-- <base-folders-grid :folders="folders"></base-folders-grid> -->
             
-            <base-files-grid :files="files" ></base-files-grid>
+            <base-files-grid  :files="getFiles" ></base-files-grid>
         </div>
 
             <!-- <v-storage-space></v-storage-space> -->

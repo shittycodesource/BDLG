@@ -22,19 +22,22 @@
         align-items: center;
         justify-content: center;
 
-        max-width: 56rem; 
+        // max-width: 56rem; 
         margin: 2rem auto;
+        width: 100%;
         
         position: relative;
         overflow: hidden;
 
         span {
-            background: #fff;
+            background: var(--background);
             position: relative; 
 
             padding: .5rem 1.2rem;
-            font-weight: 500;
-            color: #676767;
+            font-weight: 900;
+            color: #fff;
+
+            text-transform: uppercase;
 
             z-index: 2;
         }
@@ -52,8 +55,8 @@
             height: .1rem;
             width: 100%;
 
-            max-width: 56rem;
-            background: #C1C1C1;
+            // max-width: 56rem;
+            background: #373737;
 
             z-index: 1;
         }
