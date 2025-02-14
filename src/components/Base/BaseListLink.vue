@@ -31,8 +31,13 @@
 </template>
 
 <script>
+    import BaseIcon from './BaseIcon.vue';
+
     export default {
         name: "BaseListLink",
+        components: {
+            BaseIcon
+        },
         props: {
             data: {
                 type: Object
@@ -79,6 +84,10 @@
                     font-weight: 900;
                     text-decoration: none;
                     font-family: inherit;
+
+                    svg {
+                        display: none;
+                    }
                 }
 
                 &__item {

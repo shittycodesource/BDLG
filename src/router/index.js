@@ -22,6 +22,16 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../views/PinLink.vue')
     },
     {
+        path: '/new-folder',
+        name: 'new folder',
+        component: () => import(/* webpackChunkName: "about" */ '../views/NewFolder.vue')
+    },
+    {
+        path: '/folder/:id',
+        name: 'folder',
+        component: () => import(/* webpackChunkName: "about" */ '../views/Folder.vue')
+    },
+    {
         path: '/my',
         name: 'My Files',
         component: () => import(/* webpackChunkName: "about" */ '../views/MyFiles.vue')

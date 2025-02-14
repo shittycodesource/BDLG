@@ -22,6 +22,11 @@
                 >
                     {{ item.name }}
                 </button>
+
+                <button class="select-options__item select-options__item--add-more" v-if="addMore" @click="$emit('more')">
+                    <span>Создать новую...</span>
+                    <span>+</span>
+                </button>
             </div>
         </template>
     </v-input-block>
@@ -50,11 +55,15 @@
             },
             activeOption: {
                 type: Object,
-                default: () => { return {} } 
+                default: () => { return this.options[0] } 
             },
             options: {
                 type: Array,
                 default: () => [{ name: "First" }, { name: "Second" }]
+            },
+            addMore: {
+                type: Boolean,
+                default: true
             }
         },
         methods: {
@@ -65,7 +74,7 @@
 
                 this.isOpen = false;
             }
-        }
+        },
     }
 </script>
 
@@ -87,8 +96,8 @@
 
             font-family: inherit;
             font-size: 1.6rem;
-            font-weight: 500;
-            color: #000000;
+            font-weight: 700;
+            color: #fff;
 
             user-select: none;
 
@@ -97,7 +106,7 @@
             }
 
             svg {
-                fill: #000000;
+                fill: #fff;
                 transition: transform .2s ease;
             }
 
@@ -110,8 +119,10 @@
 
         &-options {
             border-radius: .8rem;
-            background: #F7F9FB;
-            border: .1rem solid #E7E7E7;
+            background: #131215;
+            border: .1rem solid #222026;
+            // background: #F7F9FB;
+            // border: .1rem solid #E7E7E7;
             box-shadow: 0rem 0.8rem 1.5rem 0 rgba(0, 0, 0, 0.05);
             cursor: pointer;
 
@@ -136,20 +147,35 @@
                 border: none;
                 background: none;
                 cursor: pointer;
-                border-bottom: .1rem solid #E7E7E7;
+                border-bottom: .1rem solid #222026;
 
                 font-family: inherit;
                 font-size: 1.6rem;
-                color: #000;
+                color: #f1f1f1;
                 text-align: left;
+                font-weight: 600;
+
+                &--add-more {
+                    color: rgba(255, 255, 255, .7);
+                    font-weight: 700;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    span:nth-child(2) {
+                        font-size: 3rem;
+                        font-weight: 400;
+                    }
+                }
 
                 &:hover {
-                    background: #E7E7E7;
+                    background: #222026;
                 }
 
                 &:focus {
                     outline: none;
-                    background: #BED4FF;
+                    background: #222026;
                 }
 
                 &:last-child {

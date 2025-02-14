@@ -159,6 +159,23 @@
         // height: 20.3rem;
         width: 100%;
 
+        animation: fileAppear .2s ease-in-out;
+        animation-fill-mode: forwards;
+        opacity: 0;
+        transform: scale(0.92);
+        
+        @keyframes fileAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.92);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
 
         &__header {
             display: flex;

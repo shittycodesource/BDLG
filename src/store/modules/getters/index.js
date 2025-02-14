@@ -4,6 +4,7 @@ import space from './modules/space.js';
 import settings from './modules/settings.js';
 import time from './modules/time.js';
 import drop from './modules/drop.js';
+import folders from './modules/folders.js'
 
 export default {
     ...auth,
@@ -11,5 +12,6 @@ export default {
     ...space,
     ...settings,
     ...time,
-    ...drop
+    ...drop,
+    ...folders
 }

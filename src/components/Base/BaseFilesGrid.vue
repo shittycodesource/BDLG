@@ -1,6 +1,6 @@
 <template>
     <div class="files">
-        <base-grid-header @toggle="value => isGrid = value" :isGrid="isGrid">ФАЙЛЫ</base-grid-header>
+        <base-grid-header @toggle="value => isGrid = value" :isGrid="isGrid">{{ title }}</base-grid-header>
 
         <div class="files__grid" v-if="isGrid">
             <template v-for="(data, index) in array">
@@ -8,9 +8,11 @@
                     v-if="data.isLink" 
                     :data="data" 
                     :key="index"
+                    :style="`animation-delay: ${index * .05}s`"
                 ></base-link>
                 <base-file
                     v-else
+                    :style="`animation-delay: ${index * .05}s`"
                     :file="data" 
                     :key="index" 
                     :isDownloadble="true"
@@ -55,6 +57,10 @@
         props: {
             files: {
                 type: Array
+            },
+            title: {
+                type: String,
+                default: "ФАЙЛЫ"
             }
         },
         data() {

@@ -5,7 +5,7 @@
 
             <base-drop-place></base-drop-place>
 
-            <!-- <base-folders-grid :folders="folders"></base-folders-grid> -->
+            <base-folders-grid :folders="getFolders"></base-folders-grid>
             
             <base-files-grid  :files="getFiles" ></base-files-grid>
         </div>
@@ -61,17 +61,6 @@ export default {
             files: [],
             isLoaded: false,
 
-            folders: [
-                { name: "Русский", colors: { primary: "#FF6B02", secondary: "#E6406B", bottom: "#1B0B02" } },
-                { name: "Математика", colors: { primary: "#32F1FF", secondary: "#0B6DFF", bottom: "#0A2D36" } },
-                { name: "Английский Язык", colors: { primary: "#7C02FF", secondary: "#B273FF", bottom: "#300F56" } } ,
-                { name: "Информатика", colors: { primary: "#4852C1", secondary: "#FF4E7C", bottom: "#1B1629" } }, 
-                { name: "Физика", colors: { primary: "#BB2035", secondary: "#FF0630", bottom: "#390E13" } }, 
-                { name: "Обществознание", colors: { primary: "#9CFFAB", secondary: "#18D181", bottom: "#08280F" } }, 
-                { name: "История", colors: { primary: "#F4DB4E", secondary: "#FF842D", bottom: "#3C3719" } }, 
-                { name: "Литература", colors: { primary: "#FF4FDF", secondary: "#FF6CCE", bottom: "#4E1A44" } }, 
-                { name: "Всякое", colors: { primary: "#fff", secondary: "#fff", bottom: "#353535" } }, 
-            ]
         }
     },
     methods: {
@@ -81,7 +70,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['getFiles', 'getFileOverlayState']),
+        ...mapGetters(['getFiles', 'getFileOverlayState', 'getFolders']),
         isNewInList() {
             let bool = false;
 

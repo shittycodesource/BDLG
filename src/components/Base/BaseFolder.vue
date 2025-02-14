@@ -1,7 +1,7 @@
 <template>
     <router-link 
         class="folder" 
-        to="/"
+        :to="`/folder/${data.id}`"
         :style="`
             --primary-color: ${data.colors.primary};
             --secondary-color: ${data.colors.secondary};

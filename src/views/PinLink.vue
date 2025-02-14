@@ -133,11 +133,4 @@
             // }
         }
     }
-
-    .line {
-        background: #272727;
-        height: .1rem;
-        width: 8rem;
-        margin: 2rem auto;
-    }
 </style>

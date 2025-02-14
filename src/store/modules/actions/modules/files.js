@@ -74,7 +74,7 @@ export default {
     /* 
         Send Documents
     */
-    async sendFiles({dispatch}, files) {
+    async sendFiles({dispatch}, { files, folder }) {
         try {
             const { urls, refs, sizes } = await uploadFiles(files);
             const result = [];
@@ -94,6 +94,8 @@ export default {
                 isAnonymous: true,
                 
                 files: result,
+
+                folder: folder,
 
                 createdAt: serverTimestamp(),
                 id
@@ -121,7 +123,7 @@ export default {
 
     hideFileOverlay({commit}) {
         commit('HIDE_FILE_OVERLAY');
-    }
+    },
 
 
 }
