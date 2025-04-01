@@ -137,6 +137,16 @@
             grid-template-rows: masonry;
         
             width: 100%;
+
+            overflow-x: hidden;
+
+            @media screen and (max-width: 1230px) {
+                grid-template-columns: repeat(auto-fill, minmax(calc(33% - 1rem), 1fr));
+            }
+
+            @media screen and (max-width: 910px) {
+                grid-template-columns: repeat(auto-fill, minmax(calc(50% - 1rem), 1fr));
+            }
         }
 
         &__list {

@@ -4,8 +4,16 @@
             <div class="folder-page__inner">
 
                 <base-drop-place></base-drop-place>
-    
-                <base-files-grid v-if="isLoading == false" :files="array" :title="folder.name"></base-files-grid>
+                
+                <transition name="baseOverlayTransition">
+                    <base-files-grid v-if="isLoading == false" :files="array" :title="folder.name"></base-files-grid>
+                    <!-- <div class="upload__empty" v-else-if="isLoading">
+                        ЗАГРУЗКА...
+                    </div> -->
+                </transition>
+                <div class="folder__empty" v-if="array.length == 0 && isLoading == false">
+                    ПУСТО
+                </div>
             </div>
         </div>
     </div>
@@ -63,5 +71,13 @@
         &__inner {
             padding-top: calc(var(--drop-place-height) + 1.6rem);
         }
+    }
+
+    .folder__empty {
+        font-weight: 900;
+        color: #181818;
+        margin: 8rem auto;
+        text-align: center;
+        font-size: 9rem;
     }
 </style>

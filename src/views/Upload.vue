@@ -27,7 +27,7 @@
                         <div class="upload__title">ДОПОЛНИТЕЛЬНО</div>
 
                         <v-select
-                            label="Отправить в папку" 
+                            label="SelectFolder" 
                             :activeOption="selectedFolder"
                             :options="getFolders"
                             @select="option => { selectedFolder = option }"
@@ -81,6 +81,8 @@ export default {
             try {
                 this.isRequestActive = true;
                 
+                // this.selectedFolder.id 
+
                 await this.sendFiles({ files: this.getDroppedFiles, folder: this.selectedFolder.id });
 
                 this.files = [];

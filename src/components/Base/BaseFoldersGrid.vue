@@ -40,6 +40,11 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.6rem;
+            
+            @media screen and (max-width: 1230px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        
         }
 
         &__list {

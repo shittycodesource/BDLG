@@ -10,6 +10,17 @@
                     :activeOption="selectedLanguage"
                     :options="[ { name: 'Русский' }, { name: 'English' } ]"
                     @select="option => { selectedLanguage = option; update() }"
+
+                    :addMore="false"
+                ></v-select>
+
+                <v-select 
+                    label="Settings_Language" 
+                    :activeOption="selectedLanguage"
+                    :options="[ { name: 'Русский' }, { name: 'English' } ]"
+                    @select="option => { selectedLanguage = option; update() }"
+
+                    :addMore="false"
                 ></v-select>
 
             </div>

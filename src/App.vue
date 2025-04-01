@@ -1,7 +1,8 @@
 <template>
     <div id="app">
         <the-sprites></the-sprites>
-        <the-sidebar></the-sidebar>
+        <the-sidebar v-if="!isMobile"></the-sidebar>
+        <the-mobile-nav v-else></the-mobile-nav>
 
         <main class="main">
             <router-view></router-view>
@@ -14,13 +15,19 @@
 <script>
 import TheSprites from './components/app/TheSprites.vue';
 import TheSidebar from './components/app/TheSidebar.vue';
+import TheMobileNav from './components/app/TheMobileNav.vue';
 
 import formatBytes from './utils/formatBytes';
 import { mapActions } from 'vuex';
 
 export default {
     name: "App",
-    components: { TheSprites, TheSidebar },
+    components: { TheSprites, TheSidebar, TheMobileNav },
+    data() {
+        return {
+            isMobile: false
+        }
+    },
     methods: {
         ...mapActions(['loadSettings', 'fetchStorageSize', 'fetchFiles', 'fetchServerTime']),
         async onCreate() {
@@ -36,10 +43,17 @@ export default {
             } catch(error) {
                 throw error;
             }
+        },
+        onResize () {
+          this.isMobile = window.innerWidth <= 930
         }
     },
     created() {
         this.onCreate();        
+    },
+    mounted () {
+        this.onResize()
+        window.addEventListener('resize', this.onResize, { passive: true })
     }
 }
 </script>
@@ -47,9 +61,6 @@ export default {
 <style lang="scss">
     html {
         font-size: 62.5%;
-
-
-         
 
         // Vars
         --background: #0C0C0C;
@@ -106,6 +117,10 @@ export default {
 
     .main {
         padding-left: 23rem;
+
+        @media screen and (max-width: 930px) {
+            padding-left: 0rem;
+        }
     }
 
     .container {

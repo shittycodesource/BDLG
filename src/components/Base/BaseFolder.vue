@@ -100,6 +100,8 @@
             align-items: flex-end;
             justify-content: space-between;
             padding: 1.6rem 1.2rem;
+
+            flex-wrap: wrap;
         }
 
         &__title {
@@ -114,6 +116,10 @@
             font-size: 1.6rem;
             color: var(--text-secondary);
             text-decoration: none;
+
+            @media screen and (max-width: 930px) {
+                display: none;
+            }
         }
 
         transition: transform .2s ease;

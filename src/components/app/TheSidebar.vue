@@ -4,7 +4,7 @@
             <img class="sidebar__logo-backdrop" :src="require('@/assets/backdrop.svg')">
             <img :src="require('@/assets/logo.svg')">
             <div class="sidebar__title">
-                BDLG
+                ФАЙЛЫ
             </div>
         </header>
         <main class="sidebar__main">
